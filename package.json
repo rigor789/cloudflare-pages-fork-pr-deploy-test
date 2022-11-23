@@ -1,0 +1,16 @@
+{
+  "name": "cloudflare-pages-fork-pr-deploy-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rigor789/cloudflare-pages-fork-pr-deploy-test.git",
+  "author": "Igor Randjelovic <rigor789@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vitepress dev .",
+    "build": "vitepress build ."
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-alpha.29",
+    "vue": "^3.2.45"
+  }
+}
