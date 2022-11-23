@@ -35,6 +35,7 @@ jobs:
           branch: pr-${{ github.event.pull_request.number }}
 
       - uses: peter-evans/find-comment@v2
+        if: always()
         id: fc
         with:
           issue-number: ${{ github.event.pull_request.number }}
