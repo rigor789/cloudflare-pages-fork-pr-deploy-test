@@ -1,7 +1,7 @@
 name: Cloudflare Pages
 
 on:
-  pull_request_target:
+  pull_request:
     branches: [ "main" ]
     
 jobs:
@@ -22,6 +22,7 @@ jobs:
           cache: 'npm'
 
       - run: npm ci
+      - run: cat README.md
       - run: npm run build
 
       - id: publish
@@ -44,7 +45,7 @@ jobs:
 
       - uses: peter-evans/create-or-update-comment@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.COMMENT_GH_TOKEN }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
@@ -66,7 +67,7 @@ jobs:
       - uses: peter-evans/create-or-update-comment@v2
         if: failure()
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.COMMENT_GH_TOKEN }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
