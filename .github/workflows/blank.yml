@@ -35,8 +35,8 @@ jobs:
         id: fc
         with:
           issue-number: ${{ github.event.pull_request.number }}
-          comment-author: 'github-actions[bot]'
-          body-includes: Build output
+          comment-author: 'rigor789'
+          body-includes: DEPLOYMENT_COMMENT
 
       - name: Create or update deploy comment
         uses: peter-evans/create-or-update-comment@v2
@@ -45,6 +45,7 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
+            <!-- DEPLOYMENT_COMMENT -->
             <table><tr><td><strong>Latest commit:</strong> </td><td>
             <code>${{ github.sha }}</code>
             </td></tr>
