@@ -45,6 +45,15 @@ jobs:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            Preview:
-            ${{ steps.publish.outputs.url }}
+            <table><tr><td><strong>Latest commit:</strong> </td><td>
+            <code>${{ github.sha }}</code>
+            </td></tr>
+            <tr><td><strong>Status:</strong></td><td>&nbsp;✅&nbsp; Deploy successful!</td></tr>
+            <tr><td><strong>Preview URL:</strong></td><td>
+            <a href='${{ steps.publish.outputs.url }}'>${{ steps.publish.outputs.url }}</a>
+            </td></tr>
+            <tr><td><strong>Branch Preview URL:</strong></td><td>
+            <a href='pr-${{ github.event.pull_request.number }}.fork-pr-deploy-test.pages.dev'>pr-${{ github.event.pull_request.number }}.fork-pr-deploy-test.pages.dev</a>
+            </td></tr>
+            </table>
           edit-mode: replace
