@@ -41,6 +41,7 @@ jobs:
       - name: Create or update deploy comment
         uses: peter-evans/create-or-update-comment@v2
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
